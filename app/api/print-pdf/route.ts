@@ -23,67 +23,37 @@ export async function GET(request: Request) {
     await page.emulateMediaType('print')
     await page.goto(targetUrl, { waitUntil: 'networkidle0', timeout: 120000 })
     
-    // Directly manipulate DOM and insert physical page breaks
+    // Directly manipulate DOM and apply styles using JavaScript
     await page.evaluate(() => {
-      // Helper function to create page break div
-      const createPageBreak = () => {
-        const div = document.createElement('div')
-        div.style.pageBreakAfter = 'always'
-        div.style.breakAfter = 'page'
-        div.style.height = '0'
-        div.style.margin = '0'
-        div.style.padding = '0'
-        div.style.border = 'none'
-        return div
-      }
-      
       // Hide download button
       document.querySelectorAll('[data-print-hide]').forEach(el => {
         (el as HTMLElement).style.display = 'none'
       })
       
-      // PAGE 1: Cover image FULL PAGE (no blue background)
+      // PAGE 1: Cover image
       const firstSection = document.querySelector('main > section:first-child') as HTMLElement
       if (firstSection) {
-        // Remove all padding, margins, backgrounds
-        firstSection.style.height = '287mm'
-        firstSection.style.maxHeight = '287mm'
-        firstSection.style.paddingTop = '0'
-        firstSection.style.paddingBottom = '0'
-        firstSection.style.paddingLeft = '0'
-        firstSection.style.paddingRight = '0'
-        firstSection.style.margin = '0'
-        firstSection.style.backgroundColor = 'white'
-        firstSection.style.display = 'block'
-        firstSection.style.overflow = 'hidden'
+        firstSection.style.maxHeight = '270mm'
+        firstSection.style.paddingTop = '2px'
+        firstSection.style.paddingBottom = '2px'
         firstSection.style.breakInside = 'avoid'
         firstSection.style.pageBreakInside = 'avoid'
-        
-        // Remove the container div padding
-        const container = firstSection.querySelector('div:not([data-print-hide])') as HTMLElement
-        if (container) {
-          container.style.maxWidth = '100%'
-          container.style.padding = '0'
-          container.style.margin = '0'
-        }
+        firstSection.style.breakAfter = 'page'
+        firstSection.style.pageBreakAfter = 'always'
         
         const img = firstSection.querySelector('img') as HTMLElement
         if (img) {
-          img.style.width = '100%'
-          img.style.height = '287mm'
-          img.style.maxHeight = '287mm'
-          img.style.objectFit = 'cover'
-          img.style.objectPosition = 'center'
-          img.style.display = 'block'
+          img.style.maxHeight = '265mm'
+          img.style.height = 'auto'
+          img.style.objectFit = 'contain'
         }
-        
-        // Insert page break after cover
-        firstSection.insertAdjacentElement('afterend', createPageBreak())
       }
       
       // PAGE 2: About + Team
       const about = document.getElementById('about') as HTMLElement
       if (about) {
+        about.style.breakBefore = 'page'
+        about.style.pageBreakBefore = 'always'
         about.style.paddingTop = '20px'
         about.style.paddingBottom = '20px'
       }
@@ -92,16 +62,19 @@ export async function GET(request: Request) {
       if (team) {
         team.style.paddingTop = '20px'
         team.style.paddingBottom = '20px'
-        
-        // Insert page break after team
-        team.insertAdjacentElement('afterend', createPageBreak())
+        team.style.breakAfter = 'page'
+        team.style.pageBreakAfter = 'always'
       }
       
       // PAGE 3: Expertise
       const expertise = document.getElementById('expertise') as HTMLElement
       if (expertise) {
+        expertise.style.breakBefore = 'page'
+        expertise.style.pageBreakBefore = 'always'
         expertise.style.paddingTop = '40px'
         expertise.style.paddingBottom = '40px'
+        expertise.style.breakAfter = 'page'
+        expertise.style.pageBreakAfter = 'always'
         expertise.style.display = 'flex'
         expertise.style.flexDirection = 'column'
         expertise.style.justifyContent = 'center'
@@ -111,78 +84,55 @@ export async function GET(request: Request) {
         
         const expertiseGrid = expertise.querySelector('.grid') as HTMLElement
         if (expertiseGrid) expertiseGrid.style.gap = '20px'
-        
-        // Insert page break after expertise
-        expertise.insertAdjacentElement('afterend', createPageBreak())
       }
       
-      // PAGE 4-5: Products - Restructure completely
+      // PAGE 4-5: Products
       const products = document.getElementById('products') as HTMLElement
       if (products) {
+        products.style.breakBefore = 'page'
+        products.style.pageBreakBefore = 'always'
+        products.style.paddingTop = '20px'
+        products.style.paddingBottom = '20px'
+        
         const productGrid = products.querySelector('.grid') as HTMLElement
         if (productGrid) {
+          productGrid.style.display = 'grid'
+          productGrid.style.gridTemplateColumns = '1fr 1fr'
+          productGrid.style.gap = '20px'
+          
           const productCards = Array.from(productGrid.children) as HTMLElement[]
           
-          // Clear the grid
-          productGrid.innerHTML = ''
-          productGrid.style.display = 'block'
-          productGrid.style.padding = '0'
-          productGrid.style.margin = '0'
-          
-          // Create Page 4 container (2 products horizontal)
-          const page4Container = document.createElement('div')
-          page4Container.style.display = 'grid'
-          page4Container.style.gridTemplateColumns = '1fr 1fr'
-          page4Container.style.gap = '20px'
-          page4Container.style.paddingTop = '20px'
-          page4Container.style.paddingBottom = '20px'
-          page4Container.style.breakInside = 'avoid'
-          page4Container.style.pageBreakInside = 'avoid'
-          
-          // Add products 1-2 to page 4
-          if (productCards[0]) {
-            productCards[0].style.breakInside = 'avoid'
-            page4Container.appendChild(productCards[0])
-          }
+          // Product 2: break after (end page 4)
           if (productCards[1]) {
-            productCards[1].style.breakInside = 'avoid'
-            page4Container.appendChild(productCards[1])
+            productCards[1].style.breakAfter = 'page'
+            productCards[1].style.pageBreakAfter = 'always'
           }
           
-          productGrid.appendChild(page4Container)
-          
-          // Insert page break after page 4
-          productGrid.appendChild(createPageBreak())
-          
-          // Create Page 5 container (4 products vertical)
-          const page5Container = document.createElement('div')
-          page5Container.style.display = 'flex'
-          page5Container.style.flexDirection = 'column'
-          page5Container.style.gap = '20px'
-          page5Container.style.paddingTop = '20px'
-          page5Container.style.paddingBottom = '20px'
-          page5Container.style.breakInside = 'avoid'
-          page5Container.style.pageBreakInside = 'avoid'
-          
-          // Add products 3-6 to page 5
+          // Products 3-6: full width vertical (page 5)
           for (let i = 2; i < productCards.length; i++) {
-            if (productCards[i]) {
-              productCards[i].style.breakInside = 'avoid'
-              productCards[i].style.width = '100%'
-              page5Container.appendChild(productCards[i])
-            }
+            productCards[i].style.gridColumn = '1 / -1'
+            productCards[i].style.maxWidth = '100%'
           }
           
-          productGrid.appendChild(page5Container)
+          // Product 6: break after (end page 5)
+          if (productCards[5]) {
+            productCards[5].style.breakAfter = 'page'
+            productCards[5].style.pageBreakAfter = 'always'
+          }
           
-          // Insert page break after page 5
-          productGrid.appendChild(createPageBreak())
+          // Prevent splitting
+          productCards.forEach(card => {
+            card.style.breakInside = 'avoid'
+            card.style.pageBreakInside = 'avoid'
+          })
         }
       }
       
       // PAGE 6: Clients + Footer
       const projects = document.getElementById('projects') as HTMLElement
       if (projects) {
+        projects.style.breakBefore = 'page'
+        projects.style.pageBreakBefore = 'always'
         projects.style.paddingTop = '20px'
         projects.style.paddingBottom = '20px'
         
@@ -196,7 +146,7 @@ export async function GET(request: Request) {
         }
       }
       
-      // Footer with gap
+      // Footer
       const footer = document.querySelector('section.bg-slate-900') as HTMLElement
       if (footer) {
         footer.style.marginTop = '30px'

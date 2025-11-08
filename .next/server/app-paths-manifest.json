@@ -1,0 +1,11 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/page": "app/page.js",
+  "/products/[slug]/page": "app/products/[slug]/page.js",
+  "/api/generate-pdf-pdfkit/route": "app/api/generate-pdf-pdfkit/route.js",
+  "/api/generate-pdf-cached/route": "app/api/generate-pdf-cached/route.js",
+  "/api/print-pdf/route": "app/api/print-pdf/route.js",
+  "/api/generate-pdf-v2/route": "app/api/generate-pdf-v2/route.js",
+  "/api/generate-pdf/route": "app/api/generate-pdf/route.js"
+}
