@@ -1,0 +1,83 @@
+[
+  {
+    "slug": "hrm",
+    "title": "ManagifyHR",
+    "subtitle": "FULL HRM SYSTEM",
+    "href": "https://managifyhr.com",
+    "logo": "/images/HRM_logo.png",
+    "description": "A full HRM system (mobile + admin panel) for attendance, payroll, and leave management.",
+    "bullets": [
+      "Geo-fencing & live location tracking",
+      "Multi-language support",
+      "Payroll automation & notifications",
+      "Document management, recruitment, recognition"
+    ]
+  },
+  {
+    "slug": "routebudget",
+    "title": "RouteBudget",
+    "subtitle": "FLEET & EXPENSE MANAGEMENT",
+    "href": "https://routebudget.com",
+    "logo": "/images/logo.png",
+    "description": "Fleet & expense management solution for cab/transport companies.",
+    "bullets": [
+      "Fuel tracking & FastTag management",
+      "Service logs & cost reports",
+      "ERP multi-admin with real-time uploads",
+      "Dashboards, alerts, and analytics"
+    ]
+  },
+  {
+    "slug": "whatsapp-crm",
+    "title": "WhatsApp CRM",
+    "subtitle": "AUTOMATED CLIENT MESSAGING",
+    "logo": "/images/Uploaded image preview.png",
+    "description": "Automated client messaging integrated with CRM for sales and support.",
+    "bullets": [
+      "Campaigns & automation",
+      "Unified inbox & templates",
+      "Reports & performance metrics"
+    ]
+  },
+  {
+    "slug": "silksew",
+    "title": "SilkSew",
+    "subtitle": "ONLINE TAILORING PLATFORM",
+    "href": "https://silksew.com",
+    "logo": "/images/Selected image presented in a lightbox_.png",
+    "description": "Online tailoring and fashion commerce platform.",
+    "bullets": [
+      "Fabric catalog & custom stitching",
+      "Measurements & size profiles",
+      "Order tracking & notifications",
+      "Coupons, ratings, and reviews"
+    ]
+  },
+  {
+    "slug": "garja",
+    "title": "MyGarja",
+    "subtitle": "LOCAL COMMERCE PLATFORM",
+    "href": "https://mygarja.com",
+    "logo": "/images/logo.jpg",
+    "description": "Local commerce and community platform for listings, orders, and engagement.",
+    "bullets": [
+      "Business listings & product catalog",
+      "Offers, coupons, and promotions",
+      "Orders, delivery status, and notifications",
+      "Vendor dashboard & analytics"
+    ]
+  },
+  {
+    "slug": "wtl",
+    "title": "WTL Tourism",
+    "subtitle": "TRAVEL BOOKING PLATFORM",
+    "logo": "/images/wtl-removebg-preview.png",
+    "description": "Travel booking and tour management platform for agencies and D2C customers.",
+    "bullets": [
+      "Package catalog with pricing & inclusions",
+      "Itinerary builder & lead management",
+      "Online booking, payments & invoices",
+      "Vendor management & vouchers"
+    ]
+  }
+]

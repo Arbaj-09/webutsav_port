@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --blue1: #0b66c3;
+  --blue2: #2b9edb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.gradient {
+  background: linear-gradient(90deg, var(--blue1), var(--blue2));
+}
+
+/* Professional scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Print styles for exact PDF rendering */
+@page {
+  size: A4;
+  margin: 5mm 6mm;
+}
+
+@media print {
+  html, body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  
+  /* Optimize zoom for content density */
+  body { zoom: 0.92; }
+  
+  img, svg, video, canvas {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  a {
+    color: inherit !important;
+    text-decoration: underline !important;
+  }
+
+  /* Preserve colors */
+  .border, .border-2, .bg-white, .bg-slate-50, .bg-slate-900, .bg-primary-600 {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ===== PAGE 1: LARGER COVER IMAGE ===== */
+  main > section:first-child {
+    max-height: 270mm !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    break-after: page !important;
+    page-break-after: always !important;
+  }
+  main > section:first-child img {
+    max-height: 265mm !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* ===== PAGE 2: ABOUT + TEAM (WITH SPACING) ===== */
+  #about {
+    break-before: page !important;
+    page-break-before: always !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+  #team {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    break-after: page !important;
+    page-break-after: always !important;
+  }
+
+  /* ===== PAGE 3: EXPERTISE (CENTERED & FITTED) ===== */
+  #expertise {
+    break-before: page !important;
+    page-break-before: always !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    break-after: page !important;
+    page-break-after: always !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  #expertise .text-center {
+    margin-bottom: 24px !important;
+  }
+  #expertise .grid {
+    gap: 20px !important;
+  }
+
+  /* ===== PAGE 4: 2 PRODUCTS HORIZONTAL ===== */
+  #products {
+    break-before: page !important;
+    page-break-before: always !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+  
+  /* Show first 2 products horizontally on page 4 */
+  #products .grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+  }
+  
+  /* Break after 2nd product to start page 5 */
+  #products .grid > *:nth-child(2) {
+    break-after: page !important;
+    page-break-after: always !important;
+  }
+  
+  /* ===== PAGE 5: 4 PRODUCTS VERTICAL ===== */
+  /* Products 3-6 display as single column (vertical) */
+  #products .grid > *:nth-child(n+3) {
+    grid-column: 1 / -1 !important;
+    max-width: 100% !important;
+  }
+  
+  /* Break after 6th product to start clients page */
+  #products .grid > *:nth-child(6) {
+    break-after: page !important;
+    page-break-after: always !important;
+  }
+  
+  /* Prevent product cards from splitting */
+  #products .grid > * {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* ===== PAGE 6: CLIENTS + FOOTER ===== */
+  #projects {
+    break-before: page !important;
+    page-break-before: always !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+  
+  /* Prevent client logos from splitting */
+  #projects .grid > * {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  
+  /* Gap before footer */
+  section.bg-slate-900 {
+    margin-top: 30px !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  section.bg-slate-900 .mt-8,
+  section.bg-slate-900 .md\:mt-12 {
+    margin-top: 10px !important;
+  }
+
+  /* Keep headings with content */
+  h1, h2, h3 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+}
