@@ -24,74 +24,50 @@ export default function PDFTemplate() {
 
       {/* PAGE 2: COMPANY INTRO + TEAM (two-column) */}
       <div className="page p-[20mm] flex flex-col">
-        <div className="mb-8">
-          <h2 className="font-poppins text-3xl font-bold text-slate-900 uppercase text-center mb-2">Company Introduction</h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-[#0b66c3] to-[#2b9edb] mx-auto" />
-        </div>
         <div className="grid grid-cols-[2fr_1fr] gap-8 flex-1">
-          <div>
-            <p className="text-slate-700 text-sm leading-relaxed mb-4">WebUtsav Pvt. Ltd. is a full-stack IT company providing software development, digital marketing, and cloud services. We build scalable products and measurable campaigns that help businesses grow.</p>
-            <p className="text-slate-700 text-sm leading-relaxed mb-4">We focus on innovation, reliability, and client satisfaction—delivering modern solutions with excellent UX, performance, and maintainable code.</p>
-            <p className="text-slate-700 text-sm leading-relaxed mb-6">We accelerate digital transformation through cloud-native architectures, automation, and data-driven decisions.</p>
-            <div className="space-y-2">
-              <p className="text-slate-800 text-sm font-semibold">Mr. Aslam Hasan Pathan — <span className="font-normal">A visionary leader passionate about innovative digital solutions.</span></p>
-              <p className="text-slate-800 text-sm font-semibold">Mr. Somnath Narayan Jadhav — <span className="font-normal">Co-founder & Technical Head ensuring project excellence.</span></p>
+          {/* Left column */}
+          <div className="space-y-4">
+            <h2 className="font-poppins text-2xl font-bold text-slate-900 uppercase">Company Introduction</h2>
+            <div className="bg-white border-2 border-slate-200 p-5 avoid-break">
+              <p className="text-slate-700 text-sm leading-relaxed mb-3">WebUtsav Pvt. Ltd. is a full-stack IT solutions company offering software development, mobile app design, digital marketing, and cloud services.</p>
+              <p className="text-slate-700 text-sm leading-relaxed">Our mission is to help businesses accelerate digital transformation through innovation, reliability, and scalable technology.</p>
+            </div>
+            <div className="bg-white border-2 border-slate-200 p-5 avoid-break">
+              <p className="text-slate-800 text-sm font-semibold mb-1">Mr. Aslam Hasan Pathan — <span className="font-normal">A visionary leader passionate about innovative digital solutions.</span></p>
+              <p className="text-slate-800 text-sm font-semibold">Mr. Somnath Narayan Jadhav — <span className="font-normal">Co-Founder & Technical Head ensuring project excellence.</span></p>
             </div>
           </div>
-          <div className="grid grid-rows-3 gap-4">
-            {[
-              { t: 'Office Address', v: 'Office No. 115, City Vista, Kharadi, Pune 411014' },
-              { t: 'Email & Phone', v: 'info@webutsav.com | +91 87669 22792' },
-              { t: 'Website', v: 'www.webutsav.com' },
-            ].map((b, i) => (
-              <div key={i} className="bg-white border-2 border-slate-200 shadow-sm p-4 avoid-break">
-                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">{b.t}</p>
-                <p className="text-sm text-slate-800">{b.v}</p>
-              </div>
-            ))}
+          {/* Right column */}
+          <div className="space-y-4">
+            <h3 className="font-poppins text-xl font-bold text-slate-900 uppercase">About Our Team</h3>
+            <div className="bg-white border-2 border-slate-200 p-5 avoid-break">
+              <p className="text-slate-700 text-sm leading-relaxed mb-3">Our IT/Product team consists of full-stack developers, designers, and engineers working with React, Next.js, Spring Boot, Flutter, and AWS.</p>
+              <p className="text-slate-700 text-sm leading-relaxed">Our Digital Marketing team specializes in SEO, PPC, branding, and creative content to enhance online presence and lead generation.</p>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* PAGE 3: TEAM + EXPERTISE */}
+      {/* PAGE 3: EXPERTISE (2-column grid + paragraph) */}
       <div className="page p-[20mm] flex flex-col">
-        <h2 className="font-poppins text-2xl font-bold text-slate-900 uppercase text-center mb-6">About Our Team</h2>
-        <div className="grid grid-cols-2 gap-6 mb-8">
-          <div className="bg-slate-50 border-2 border-slate-200 p-6 avoid-break">
-            <h3 className="font-poppins text-lg font-bold text-[#0b66c3] mb-3 uppercase">IT / Product Team</h3>
-            <p className="text-slate-700 text-sm leading-relaxed mb-3">We build robust web and mobile applications with modern stacks and scalable cloud.</p>
-            <div className="flex flex-wrap gap-2 text-xs font-semibold text-white">
-              {['React','Next.js','Spring Boot','Flutter','Node.js','PostgreSQL','AWS'].map(k => (
-                <span key={k} className="bg-gradient-to-r from-[#0b66c3] to-[#2b9edb] px-3 py-1 uppercase">{k}</span>
-              ))}
-            </div>
-          </div>
-          <div className="bg-slate-50 border-2 border-slate-200 p-6 avoid-break">
-            <h3 className="font-poppins text-lg font-bold text-[#0b66c3] mb-3 uppercase">Digital Marketing Team</h3>
-            <p className="text-slate-700 text-sm leading-relaxed mb-3">We drive measurable growth using SEO, PPC, SMM, content, and branding.</p>
-            <div className="flex flex-wrap gap-2 text-xs font-semibold text-white">
-              {['SEO','PPC','SMM','Content','Branding'].map(k => (
-                <span key={k} className="bg-gradient-to-r from-[#0b66c3] to-[#2b9edb] px-3 py-1 uppercase">{k}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-        <h2 className="font-poppins text-2xl font-bold text-slate-900 uppercase text-center mb-4">Our Expertise</h2>
-        <div className="grid grid-cols-3 gap-5">
+        <h2 className="font-poppins text-2xl font-bold text-slate-900 uppercase text-center mb-6">Our Expertise</h2>
+        <div className="grid grid-cols-2 gap-5 mb-6">
           {[
-            { title: 'Full-Stack Development', desc: 'React, Next.js, Node.js, and modern databases.' },
-            { title: 'Mobile Apps', desc: 'Flutter and React Native cross-platform apps.' },
-            { title: 'Cloud & AWS DevOps', desc: 'Infra setup, CI/CD, observability.' },
-            { title: 'UI/UX', desc: 'User-centered design and prototyping.' },
-            { title: 'CRM Integrations', desc: 'WhatsApp CRM, EmailJS, automation.' },
-            { title: 'SEO & Ads', desc: 'Google Ads, analytics, and optimization.' },
-          ].map((item, i) => (
+            'Full-stack software development',
+            'Mobile app engineering (Flutter, React Native)',
+            'Cloud & AWS DevOps',
+            'UI/UX and web design',
+            'CRM integrations (WhatsApp CRM, EmailJS)',
+            'SEO, Google Ads, and social media marketing',
+          ].map((title, i) => (
             <div key={i} className="bg-white border-2 border-slate-200 p-4 avoid-break">
-              <h3 className="font-poppins text-sm font-bold text-slate-900 mb-2 uppercase">{item.title}</h3>
-              <p className="text-slate-700 text-xs leading-relaxed">{item.desc}</p>
+              <h3 className="font-poppins text-sm font-bold text-slate-900">{title}</h3>
             </div>
           ))}
         </div>
+        <p className="text-slate-700 text-center text-sm max-w-[150mm] mx-auto">
+          We combine technology and creativity to deliver end-to-end digital solutions that drive measurable business growth.
+        </p>
       </div>
 
       {/* PAGE 4: 2 PRODUCTS VERTICAL (stacked full width) */}
@@ -109,9 +85,20 @@ export default function PDFTemplate() {
             </div>
             <p className="text-slate-700 text-xs leading-relaxed mb-3">ManagifyHR is a complete Human Resource Management platform designed to streamline employee management, attendance tracking, and payroll automation. It supports both web and mobile access.</p>
             <ul className="text-slate-700 text-xs space-y-1">
-              {['mobile punch-in/out with geo-fencing','automated payroll & payslip generation','leave/shift/attendance management','document uploads & employee self-service','multilingual interface (English/Hindi/Marathi)','real-time reports and notifications'].map((b,i)=>(<li key={i}>• {b}</li>))}
+              {[
+                'Mobile punch-in/out with geo-fencing',
+                'Automated payroll and payslip generation',
+                'Leave, shift, and attendance management',
+                'Document uploads and employee self-service',
+                'Multilingual interface (English/Hindi/Marathi)',
+                'Real-time reports and notifications',
+              ].map((b,i)=>(<li key={i}>• {b}</li>))}
             </ul>
             <a href="https://managifyhr.com" className="text-[#0b66c3] text-xs font-semibold mt-3 inline-block">Visit managifyhr.com →</a>
+            {/* Wide screenshot placeholder */}
+            <div className="mt-4">
+              <Image src="/images/managifyhr-screenshot.jpg" alt="ManagifyHR Screenshot" width={1000} height={520} className="w-full h-auto object-cover border border-slate-200" />
+            </div>
           </div>
           {/* RouteBudget */}
           <div className="bg-white border-2 border-slate-200 p-5 avoid-break">
@@ -124,32 +111,37 @@ export default function PDFTemplate() {
             </div>
             <p className="text-slate-700 text-xs leading-relaxed mb-3">RouteBudget is a fleet and expense management solution for transport and cab businesses. It centralizes fuel, toll, maintenance, and driver expense data with analytics and cloud sync.</p>
             <ul className="text-slate-700 text-xs space-y-1">
-              {['fuel & expense logging with image uploads','FastTag & toll recharge management','maintenance & service logs','vehicle-wise expense analytics','role-based ERP access','cloud sync & real-time reporting'].map((b,i)=>(<li key={i}>• {b}</li>))}
+              {[
+                'Fuel & expense logging with image uploads',
+                'FastTag & toll recharge management',
+                'Maintenance & service logs',
+                'Vehicle-wise analytics dashboard',
+                'Role-based ERP access',
+                'Cloud sync & real-time reporting',
+              ].map((b,i)=>(<li key={i}>• {b}</li>))}
             </ul>
             <a href="https://routebudget.com" className="text-[#0b66c3] text-xs font-semibold mt-3 inline-block">Visit routebudget.com →</a>
+            {/* Wide screenshot placeholder */}
+            <div className="mt-4">
+              <Image src="/images/routebudget-screenshot.jpg" alt="RouteBudget Screenshot" width={1000} height={520} className="w-full h-auto object-cover border border-slate-200" />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* PAGE 5: 4 PRODUCTS HORIZONTAL (2 columns x 2 rows) */}
+      {/* PAGE 5: Product Versions & Highlights (2x2 grid) */}
       <div className="page p-[20mm]">
+        <h2 className="font-poppins text-2xl font-bold text-slate-900 uppercase text-center mb-6">Product Versions & Highlights</h2>
         <div className="grid grid-cols-2 gap-6">
-          {products.slice(2,6).map((product: any, i: number) => (
-            <div key={i} className="bg-white border-2 border-slate-200 p-4 avoid-break flex flex-col">
-              <div className="flex items-center gap-3 mb-3">
-                <Image src={product.logo} alt={product.title} width={42} height={42} className="object-contain" />
-                <div>
-                  <h3 className="font-poppins text-base font-bold text-slate-900">{product.title}</h3>
-                  {product.subtitle && (<span className="text-xs text-[#0b66c3] font-semibold uppercase">{product.subtitle}</span>)}
-                </div>
-              </div>
-              <p className="text-slate-700 text-xs leading-relaxed mb-2">{product.description}</p>
-              {Array.isArray(product.bullets) && (
-                <ul className="text-slate-700 text-xs space-y-1 flex-1">
-                  {product.bullets.slice(0,5).map((b:string, j:number)=>(<li key={j}>• {b}</li>))}
-                </ul>
-              )}
-              {product.url && (<a href={product.url} className="text-[#0b66c3] text-xs font-semibold mt-3">Visit →</a>)}
+          {[
+            { title: 'ManagifyHR — Mobile App', desc: 'Mobile dashboard for employees, field attendance, and instant notifications.' },
+            { title: 'ManagifyHR — Admin Panel', desc: 'Centralized HR dashboard for payroll, attendance, and compliance.' },
+            { title: 'RouteBudget — Mobile App', desc: 'Real-time expense tracking, receipt uploads, and route monitoring.' },
+            { title: 'RouteBudget — Admin Panel', desc: 'Vehicle analytics, driver records, and cost management tools.' },
+          ].map((item, i) => (
+            <div key={i} className="bg-white border-2 border-slate-200 p-5 avoid-break">
+              <h3 className="font-poppins text-base font-bold text-[#0b66c3] mb-2">{item.title}</h3>
+              <p className="text-slate-700 text-sm leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>

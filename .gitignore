@@ -1,0 +1,34 @@
+# Node / Next.js
+node_modules/
+.next/
+.out/
+.dist/
+dist/
+build/
+.vercel/
+.turbo/
+.cache/
+coverage/
+
+# Environment
+.env*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor
+.vscode/
+.idea/
+
+# Generated PDFs and zips (prevent oversized files)
+*.pdf
+*.zip
+
+# Test and scratch
+scripts/
